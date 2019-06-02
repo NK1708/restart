@@ -1,0 +1,99 @@
+<section class='s-service' id="layer1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-service__title">
+          <h1 class='h1'>Сервисный центр RestartEkb</h1>
+          <h3 class='h3'>Ремонт iPhone, iPad, Macbook и прочей техники. Цены снижены!</h3>
+          <a href="#" class="s-service__down">Листайте вниз</a>
+        </div>
+        <div class="s-service__form">
+          <img src="catalog/view/theme/default/img/element1.png" class="s-service__img1 paroller1" data-paroller-direction="vertical" data-paroller-factor="-0.1" data-paroller-type="foreground" alt="background-element1">
+          <img src="catalog/view/theme/default/img/element2.png" class="s-service__img2" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="0.3" data-paroller-type="foreground">
+          <h4 class="h4">Узнайте стоимость ремонта вашего устройства</h4>
+          <select name="request_form_gadjet" data-select="select_blue" data-prevent-stop="1">
+            <option disabled selected>Выберите устройство</option>
+            {% for category in categories %}
+            <option disabled>{{ category['name'] }}</option>
+            {% for device in category['children'] %}
+            <option value="{{ device['category_id'] }}">{{ device['name'] }}</option>
+            {% endfor %}
+            {% endfor %}
+          </select>
+          <select name="request_form_problem" data-select="select_blue" data-prevent-stop="1">
+            <option disabled selected>Что с ним случилось?</option>
+            <option disabled>Выберите устройство</option>
+          </select>
+          <div class="s-service__phone input-group-a">
+            <label class="input-label">Телефон</label>
+            <input class="input-text" type="text" name="request_form_phone"/>
+          </div>
+          <a href="#" class="s-service__button">Узнать стоимость<span class="arrow-right"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(".s-service__down").click(function() {
+    $("html, body").animate({
+      scrollTop: $(".s-repair").offset().top
+    }, 1000);
+    return false;
+  });
+  $(document).on("click", ".request_form_gadjet li[choise='true']", function(e) {
+    var self = $(e.target),
+        category_id = self.attr('rel');
+    $.ajax({
+      url: "index.php?route=product/category/getDevice",
+      type: "post",
+      data: {
+        'category_id': category_id,
+      },
+      dataType: 'json',
+      success: function(json) {
+        $("select[name='request_form_problem']").empty();
+        $("select[name='request_form_problem']").siblings('.select-options').empty();
+        for(var item in json['services']) {
+          $("select[name='request_form_problem']").append("<option value=" + json['services'][item].service_name + ">" + json['services'][item].service_name + "</option>");
+          $("select[name='request_form_problem']").siblings(".select-options").append("<li rel=" + json['services'][item].service_name + " choise='true'>" + json['services'][item].service_name + "</li>");
+        }
+      }
+    });
+  });
+
+  $(".s-service__form .s-service__button").click(function(event) {
+      $.ajax({
+          url: "index.php?route=information/contact/request_form",
+          type: "post",
+          beforeSend: function() {
+            $(".input-group-a").removeClass("invalid");
+            $(".input-group-a .text-danger").empty();
+          },
+          data: {
+              request_form_device: $("select[name='request_form_gadjet']").siblings(".select-styled").text(),
+              request_form_problem: $("select[name='request_form_problem']").siblings(".select-styled").text(),
+              request_form_phone: $("input[name='request_form_phone']").val(),
+          },
+          dataType: 'json',
+          success: function(json) {
+            if (json['error'].length != 0) {
+              for (i in json['error']) {
+                var element = $('#callback input[name="'+i+'"]');
+                if ($(element)) {
+                    $(element).parent(".input-group-a").addClass("invalid");
+                    $(element).parent(".input-group-a").append("<div class='text-danger'>" + json['error'][i] + "</div>");
+                } else {
+                    $(element).parent(".input-group-a").removeClass("invalid");
+                    $(element).parent(".input-group-a .text-danger").empty();
+                }
+              }
+            } else {
+              $('#success_modal').modal("show");
+            }
+          }
+      });
+      return false;
+  });
+</script>

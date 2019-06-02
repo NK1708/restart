@@ -1,0 +1,154 @@
+{{ header }}
+<div id="product-category" class="container s-category">
+  <div class="s-category__wrap"><div class="s-category__links">
+    {% for device in devices %}
+          <a href="{{ device['href'] }}">{{ device['name'] }}</a>
+        {% endfor %}
+    </div>
+  </div>
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <img src="{{ thumb }}" class="s-category__img">
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      {{ content_top }}
+      <div class="row">
+        <div class="col-md-7">
+          <img src="catalog/view/theme/default/img/element2.png" class="s-category__par1" alt="" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+          <h1 class="h1 page-title">{{ heading_title }}</h1>
+          <div class="s-category__desc">
+            {{ description }}
+          </div>
+          <div class="s-category__price s-category-price">
+            <div class="s-category__info s-category-info">
+              <div class="s-category-price__name">Стоимость ремонта:</div>
+              <div class="s-category-price__price {% if price_new != 0 %} s-category__price_old {% endif %}">{{ price }}</div>
+              {% if price_new != 0 %}
+              <div class="s-category-price__price">{{ price_new }}</div>
+              {% endif %}
+            </div>
+            <div class="s-category__link">
+              <a href="#" class="s-service__button" data-toggle="modal" data-target="#callback_modal">Оставить заявку<span class="arrow-right"></span></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-offset-1 col-md-4">
+          <div class="slider s-category__slider slider_number owl-carousel">
+            {% for image in images %}
+            <div class="slider__item slider-item" style="background-image: url('{{ image.thumb }}')">
+            </div>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+
+
+<div class="s-category__model">
+   <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="h2 s-category__model__title">Описание услуги<h2>
+            </div>
+            <div class="col-md-8">
+              <div class="s-category__model__text">
+                {{ less_description }}
+              </div>
+              <div class="s-category-model__price s-category-price">
+                <div class="s-category__info s-category-info">
+                  <div class="s-category-price__name">Стоимость ремонта:</div>
+                  <div class="s-category-price__price {% if price_new != 0 %} s-category__price_old {% endif %}">{{ price }}</div>
+                  {% if price_new != 0 %}
+                  <div class="s-category-price__price">{{ price_new }}</div>
+                  {% endif %}
+                </div>
+                <div class="s-category__link">
+                  <a href="#" class="s-service__button" data-toggle="modal" data-target="#callback_modal">Оставить заявку<span class="arrow-right"></span></a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="s-category__more">
+   <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="h2">С этой услугой также смотрят</h2>
+                <div class="s-category__table">
+                  {% for service in services_related %}
+                  <a href="{{ service['href'] }}" class="s-category__table-item">
+                    <h5 class="h5">{{ service['name'] }}</h5>
+                    <span>Замена стекла или дисплея <span class="arrow-right"></span></span>
+                  </a>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+$(".s-category__price .s-service__button").click(function() {
+  var subject = $(".page-title").text();
+  $("input[name='callback_subject']").val(subject);
+});
+
+$(document).ready(function() {
+  $('.slider').owlCarousel({
+    loop: true,
+    nav: true,
+    smartSpeed: 700,
+    navText: ['<div class="nav-button prev"><p><svg xmlns="http://www.w3.org/2000/svg" width="30.344" height="11.68" viewBox="0 0 30.344 11.68"><path id="arrow_long_left" class="cls-1" d="M420,1568H391.706l4.648,4.65-0.708.7-5.146-5.14-0.146.14-0.708-.7,0.147-.15-0.147-.15L390,1567h0l0.353-.35,0.146,0.14,5.146-5.14,0.708,0.7-4.646,4.65H420v1Z" transform="translate(-389.656 -1561.66)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>', '<div class="nav-button next"><p><svg xmlns="http://www.w3.org/2000/svg" width="31.34" height="11.688" viewBox="0 0 31.34 11.688"><path id="arrow_long_right" class="cls-1" d="M1530.35,773.646l-0.7.707-0.15-.146-5.15,5.146-0.7-.707,4.64-4.647H1499v-1h29.29l-4.64-4.647,0.7-.707,5.15,5.147,0.15-.147,0.7,0.707-0.14.147Z" transform="translate(-1499 -767.656)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>'],
+    items: 1,
+  });
+});
+$("#form_no_model .s-category__button").click(function(event) {
+    $.ajax({
+        url: "index.php?route=product/category/callback_no_model",
+        type: "post",
+        beforeSend: function() {
+          $(".input-group-a").removeClass("invalid");
+          $(".input-group-a .text-danger").empty();
+        },
+        data: {
+            device: $("input[name='no_model_device']").val(),
+            phone: $("input[name='no_model_phone']").val(),
+        },
+        dataType: 'json',
+        success: function(json) {
+          if (json['error'].length != 0) {
+            for (i in json['error']) {
+              var element = $('#form_no_model input[name="'+i+'"]');
+              if ($(element)) {
+                  $(element).parent(".input-group-a").addClass("invalid");
+                  $(element).parent(".input-group-a").append("<div class='text-danger'>" + json['error'][i] + "</div>");
+              } else {
+                  $(element).parent(".input-group-a").removeClass("invalid");
+                  $(element).parent(".input-group-a .text-danger").empty();
+              }
+            }
+          } else {
+            $('#success_modal').modal("show");
+          }
+        }
+    });
+    return false;
+});
+</script>
+{{ footer }}

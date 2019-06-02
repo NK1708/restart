@@ -1,0 +1,44 @@
+{{ header }}
+<div id="information-information" class="container">
+  <img src="catalog/view/theme/default/img/element2.png" class="s-category__par1" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+  <img src="catalog/view/theme/default/img/element3.png" class="s-service__img3" alt="background-element3" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+  <div class="s-category__wrap"><div class="s-category__links" style="opacity: 0"></div></div>
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">
+    {{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }} s-news">{{ content_top }}
+      <h1 class="h1">{{ heading_title }}</h1>
+      <div class="col-sm-4">
+        {% for year in years %}
+        <a href="{{ year['href'] }}" class="s-news__year {% if year['year'] == current_year %} active {% endif %}">{{ year['year'] }}</a>
+        {% endfor %}
+      </div>
+      <div class="col-sm-8">
+        {% for news in news_list %}
+          <a href="{{ news.href }}" class="s-news__box">
+          <div class="s-news__img" style="background-image: url({{ news.image }})"></div>
+          <div class="s-news__text">
+            <h3>{{ news.title }}</h3>
+            <span class="s-news__date">{{ news.date_added }}</span>
+          </div>
+          </a>
+        {% endfor %}
+        {{ pagination }}
+      </div>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}

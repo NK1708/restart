@@ -1,0 +1,137 @@
+{{ header }}
+<section class="s-contacts">
+  <div class="s-category__wrap"><div class="s-category__links" style="opacity: 0"></div></div>
+  <img src="catalog/view/theme/default/img/element2.png" class="s-category__par1" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+  <img src="catalog/view/theme/default/img/element3.png" class="s-service__img3" alt="background-element3" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <h1 class="s-contacts__title">Контакты</h1>
+        <select name="branch" data-select="select_blue" data-prevent-stop="1">
+          <option disabled selected>Выберите филиал</option>
+          {% for branch in branchs %}
+          <option value="{{ branch['branch_id'] }}">{{ branch['name'] }}</option>
+          {% endfor %}
+        </select>
+        <div class="s-contacts__box">
+          <div class="s-contacts__box-line1">Адрес</div>
+          <div class="s-contacts__box-line2 branch_address">{{ branch['data']['address'] }}</div>
+        </div>
+        <div class="s-contacts__box">
+          <div class="s-contacts__box-line1">Телефон</div>
+          <div class="s-contacts__box-line2 branch_phone"><a href="tel:{{ branch['data']['phone'] }}">{{ branch['data']['phone'] }}</a></div>
+          <div class="s-contacts__box-line2 branch_phone2"><a href="tel:{{ branch['data']['phone2'] }}">{{ branch['data']['phone2'] }}</a></div>
+        </div>
+        <div class="s-contacts__box">
+          <div class="s-contacts__box-line1">Email</div>
+          <div class="s-contacts__box-line2 branch_email"><a href="mailto:{{ branch['data']['email'] }}">{{ branch['data']['email'] }}</a></div>
+        </div>
+        <div class="s-contacts__box">
+          <div class="s-contacts__box-line1">Время работы: Пн-Пт 10:00-20:00<br>СБ, ВС 10:00-18:00</div>
+          <div class="s-contacts__box-line1">Без выходных работаем для Вас и Ваших айфонов!</div>
+        </div>
+        <a href="#" class="s-contacts__button" data-toggle="modal" data-target="#callback_modal">Задать вопрос<span class="arrow-right"></span></a>
+      </div>
+    </div>
+  </div>
+  <div id="map">
+    <div id="map-wrap"></div>
+    {% if branch['images']|length > 0 %}
+    <div class="slider slider_small owl-carousel">
+      {% for image in branch['images'] %}
+      <div class="slider__item slider-item">
+        <div class="slider-item__img" style="background-image: url({{ image['image'] }})"></div>
+        <div class="slider-item__title">Фотографии филиала</div>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<script>
+$(document).ready(function() {
+  $('#map-wrap')
+  .click(function(){
+         $(this).find('ymaps').addClass('clicked')})
+  .mouseleave(function(){
+         $(this).find('ymaps').removeClass('clicked')});
+});
+var storesMap;
+function maps(adress) {
+  ymaps.ready(init);
+  function init () {
+      storesMap = new ymaps.Map("map-wrap", {
+        center: [56.83370304, 60.60430978],
+        zoom: 13
+      });
+
+      var myGeocoder = ymaps.geocode(adress);
+      myGeocoder.then(
+          function (res) {
+              var coords = res.geoObjects.get(0).geometry.getCoordinates();
+              var myGeocoder = ymaps.geocode(coords, {kind: 'house', results: 1});
+              myGeocoder.then(
+                  function (res) {
+                      var nearest = res.geoObjects.get(0);
+                      storesMap.geoObjects.add(res.geoObjects);
+                      storesMap.setCenter(coords, "16");
+                  }
+              );
+          },
+          function (err) {
+              alert('Ошибка');
+          }
+      );
+  }
+}
+
+function slider_init() {
+  $('.slider').owlCarousel({
+    loop: true,
+    nav: true,
+    smartSpeed: 700,
+    navText: ['<div class="nav-button prev"><p><svg xmlns="http://www.w3.org/2000/svg" width="30.344" height="11.68" viewBox="0 0 30.344 11.68"><path id="arrow_long_left" class="cls-1" d="M420,1568H391.706l4.648,4.65-0.708.7-5.146-5.14-0.146.14-0.708-.7,0.147-.15-0.147-.15L390,1567h0l0.353-.35,0.146,0.14,5.146-5.14,0.708,0.7-4.646,4.65H420v1Z" transform="translate(-389.656 -1561.66)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>', '<div class="nav-button next"><p><svg xmlns="http://www.w3.org/2000/svg" width="31.34" height="11.688" viewBox="0 0 31.34 11.688"><path id="arrow_long_right" class="cls-1" d="M1530.35,773.646l-0.7.707-0.15-.146-5.15,5.146-0.7-.707,4.64-4.647H1499v-1h29.29l-4.64-4.647,0.7-.707,5.15,5.147,0.15-.147,0.7,0.707-0.14.147Z" transform="translate(-1499 -767.656)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>'],
+    items: 1,
+  });
+}
+
+$(document).ready(function() {
+  maps($(".branch_address").text());
+  slider_init();
+});
+
+$(document).on("click", ".branch li[choise='true']", function(e) {
+  var self = $(e.target),
+      branch_id = self.attr('rel');
+  $.ajax({
+    url: "index.php?route=information/contact/getBranch",
+    type: "post",
+    data: {
+      'branch_id': branch_id,
+    },
+    dataType: 'json',
+    success: function(json) {
+      $(".branch_address").html(json.data.address);
+      $(".branch_phone").html('<a href="tel:' + json.data.phone + '">'+ json.data.phone +'</a>');
+      $(".branch_phone2").html('<a href="tel:' + json.data.phone2 + '">'+ json.data.phone2 +'</a>');
+      $(".branch_email").html('<a href="mailto:' + json.data.email + '">'+ json.data.email +'</a>');
+      $("#map .slider").remove();
+      if (json.images.length > 0) {
+        var slider = '<div class="slider slider_small owl-carousel">';
+        for (image in json.images) {
+          slider += '<div class="slider__item slider-item"><div class="slider-item__img" style="background-image: url(' + json.images[image].image + ')"></div><div class="slider-item__title">Фотографии филиала</div></div>'
+        }
+        slider += '</div>';
+        setTimeout(function() {
+          slider_init();
+        }, 1000);
+        $("#map-wrap").after(slider);
+      }
+      storesMap.destroy();
+      maps(json.data.address);
+    }
+  });
+});
+</script>
+{{ footer }}

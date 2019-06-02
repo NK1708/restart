@@ -1,0 +1,980 @@
+
+//variables for customization
+$duration: 0.4s;
+$border-size: 2px;
+$border-color: #517180;
+$button-width: 200px;
+$button-height: 40px;
+$size-radius: 5px;
+
+//------------------------------------------------------------------
+
+@mixin border-radius($size-radius, $sideH) {
+  @if $sideH != 'all' {
+      -webkit-border-top-#{$sideH}-radius: $size-radius;
+      -moz-border-top-#{$sideH}-radius: $size-radius;
+      border-top-#{$sideH}-radius: $size-radius;
+      -webkit-border-bottom-#{$sideH}-radius: $size-radius;
+      -moz-border-bottom-#{$sideH}-radius: $size-radius;
+      border-bottom-#{$sideH}-radius: $size-radius;
+  } @else if $sideH == 'all' {
+      -webkit-border-radius: $size-radius;
+      -moz-border-radius: $size-radius;
+      border-radius: $size-radius;
+  }
+}
+
+@mixin sub-button {
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    display: block;
+    opacity: 0;
+}
+
+
+p {
+  text-align: center;
+  color: #999;
+}
+
+.nav-button {
+    display: inline-block;
+    position: relative;
+    border: solid 1px #cbd4d9;
+    height: $button-height;
+    p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        text-align: center;
+        color: #A8B1BF;
+        font-size: 14px;
+        line-height: $button-height;
+    }
+}
+
+.nav-button:hover {
+    z-index: 1;
+    position: relative;
+    p {
+      color: #21446e;
+    }
+}
+.nav-button1 {
+  width: 118px;
+  border-radius: 5px 0 0 5px;
+  .hoverBtn {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      top: -1px;
+      &:before {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-left: solid $border-size $border-color;
+          border-radius: 5px 0px 0px 5px;
+          right: 57px;
+      }
+      &:after {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-right: solid $border-size $border-color;
+          border-radius: 0px 0px 0px 0px;
+          left: 59px;
+      }
+  }
+  .hoverBtn-bottom {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      &:before {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          right: 0;
+      }
+      &:after {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          border-radius: 0px 0px 0px 5px;
+          left: 0;
+      }
+  }
+  &:hover .hoverBtn:before,
+  &:hover .hoverBtn:after {
+      opacity: 1;
+      -webkit-animation: open $duration;
+      /* Chrome, Safari, Opera */
+      animation: open $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+  &:hover .hoverBtn-bottom:before,
+  &:hover .hoverBtn-bottom:after {
+      opacity: 1;
+      -webkit-animation: openB $duration;
+      /* Chrome, Safari, Opera */
+      animation: openB $duration;
+      animation-delay: $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+}
+.nav-button2 {
+  width: 96px;
+  margin: 0 -5px 0 -4px;
+  .hoverBtn {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      top: -1px;
+      &:before {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-left: solid $border-size $border-color;
+          border-radius: 0px 0 0 0px;
+          right: 46px;
+      }
+      &:after {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-right: solid $border-size $border-color;
+          border-radius: 0px 0 0 0;
+          left: 48px;
+      }
+  }
+  .hoverBtn-bottom {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      &:before {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          right: 0;
+      }
+      &:after {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          border-radius: 0px 0px 0px 0px;
+          left: 0;
+      }
+  }
+  &:hover .hoverBtn:before,
+  &:hover .hoverBtn:after {
+      opacity: 1;
+      -webkit-animation: open2 $duration;
+      /* Chrome, Safari, Opera */
+      animation: open2 $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+  &:hover .hoverBtn-bottom:before,
+  &:hover .hoverBtn-bottom:after {
+      opacity: 1;
+      -webkit-animation: openB2 $duration;
+      /* Chrome, Safari, Opera */
+      animation: openB2 $duration;
+      animation-delay: $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+}
+.nav-button3 {
+  width: 204px;
+  border-radius: 0px 5px 5px 0px;
+  .hoverBtn {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    top: -1px;
+    &:before {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-left: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 0px;
+        right: 100px;
+    }
+    &:after {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-right: solid $border-size $border-color;
+        border-radius: 0px 5px 5px 0px;
+        left: 100px;
+    }
+  }
+  .hoverBtn-bottom {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    &:before {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        border-radius: 0px 5px 5px 0px;
+        right: 0;
+    }
+    &:after {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 0px;
+        left: 0;
+    }
+  }
+  &:hover .hoverBtn:before,
+  &:hover .hoverBtn:after {
+    opacity: 1;
+    -webkit-animation: open3 $duration;
+    /* Chrome, Safari, Opera */
+    animation: open3 $duration;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    animation-direction: normal;
+  }
+  &:hover .hoverBtn-bottom:before,
+  &:hover .hoverBtn-bottom:after {
+    opacity: 1;
+    -webkit-animation: openB3 $duration;
+    /* Chrome, Safari, Opera */
+    animation: openB3 $duration;
+    animation-delay: $duration;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+    animation-direction: normal;
+  }
+}
+
+.nav-button4 {
+  width: 118px;
+  border-radius: 5px 0 0 5px;
+  .hoverBtn {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    top: -1px;
+    &:before {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-left: solid $border-size $border-color;
+        border-radius: 5px 0px 0px 5px;
+        right: 59px;
+    }
+    &:after {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-right: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 0px;
+        left: 59px;
+    }
+  }
+  .hoverBtn-bottom {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    &:before {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        right: 0;
+    }
+    &:after {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 5px;
+        left: 0;
+    }
+  }
+  &:hover .hoverBtn:before,
+  &:hover .hoverBtn:after {
+      opacity: 1;
+      -webkit-animation: open4 $duration;
+      /* Chrome, Safari, Opera */
+      animation: open4 $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+  &:hover .hoverBtn-bottom:before,
+  &:hover .hoverBtn-bottom:after {
+      opacity: 1;
+      -webkit-animation: openB4 $duration;
+      /* Chrome, Safari, Opera */
+      animation: openB4 $duration;
+      animation-delay: $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+}
+
+.nav-button5 {
+  width: 118px;
+  border-radius: 0px 5px 5px 0px;
+  .hoverBtn {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    top: -1px;
+    &:before {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-left: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 0px;
+        right: 59px;
+    }
+    &:after {
+        @include sub-button;
+        border-top: solid $border-size $border-color;
+        border-right: solid $border-size $border-color;
+        border-radius: 0px 5px 5px 0px;
+        left: 59px;
+    }
+  }
+  .hoverBtn-bottom {
+    width: 100%;
+    height: $button-height;
+    position: absolute;
+    &:before {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        border-radius: 0px 5px 5px 0px;
+        right: 0;
+    }
+    &:after {
+        @include sub-button;
+        height: $button-height;
+        border-bottom: solid $border-size $border-color;
+        border-radius: 0px 0px 0px 0px;
+        left: 0;
+    }
+  }
+  &:hover .hoverBtn:before,
+  &:hover .hoverBtn:after {
+      opacity: 1;
+      -webkit-animation: open5 $duration;
+      /* Chrome, Safari, Opera */
+      animation: open5 $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+  &:hover .hoverBtn-bottom:before,
+  &:hover .hoverBtn-bottom:after {
+      opacity: 1;
+      -webkit-animation: openB5 $duration;
+      /* Chrome, Safari, Opera */
+      animation: openB5 $duration;
+      animation-delay: $duration;
+      animation-fill-mode: forwards;
+      animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+      animation-direction: normal;
+  }
+}
+
+p.credits {
+  text-align: center;
+  font-family: 'Source Sans Pro', sans-serif;
+  color: #888;
+  font-size: 16px;
+}
+
+.slider {
+  .nav-button {
+    .hoverBtn {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      top: -1px;
+      &:before {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-left: solid $border-size $border-color;
+          border-radius: 5px 0px 0px 5px;
+          right: 30px;
+      }
+      &:after {
+          @include sub-button;
+          border-top: solid $border-size $border-color;
+          border-right: solid $border-size $border-color;
+          border-radius: 0px 5px 5px 0px;
+          left: 30px;
+      }
+    }
+    .hoverBtn-bottom {
+      width: 100%;
+      height: $button-height;
+      position: absolute;
+      &:before {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          border-radius: 0px 5px 5px 0px;
+          right: 0;
+      }
+      &:after {
+          @include sub-button;
+          height: $button-height;
+          border-bottom: solid $border-size $border-color;
+          border-radius: 0px 0px 0px 5px;
+          left: 0;
+      }
+    }
+    &:hover .hoverBtn:before,
+    &:hover .hoverBtn:after {
+        opacity: 1;
+        -webkit-animation: open5 $duration;
+        /* Chrome, Safari, Opera */
+        animation: open5 $duration;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        animation-direction: normal;
+    }
+    &:hover .hoverBtn-bottom:before,
+    &:hover .hoverBtn-bottom:after {
+        opacity: 1;
+        -webkit-animation: openB5 $duration;
+        /* Chrome, Safari, Opera */
+        animation: openB5 $duration;
+        animation-delay: $duration;
+        animation-fill-mode: forwards;
+        animation-timing-function: cubic-bezier(0.39, 0.575, 0.565, 1);
+        animation-direction: normal;
+    }
+  }
+}
+
+@keyframes open {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 59px;
+        height: 0;
+    }
+    100% {
+        width: 59px;
+        height: $button-height;
+    }
+}
+
+@keyframes openB {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 59px;
+    }
+}
+
+@keyframes open2 {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 48px;
+        height: 0;
+    }
+    100% {
+        width: 48px;
+        height: $button-height;
+    }
+}
+
+@keyframes openB2 {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 48px;
+    }
+}
+
+@keyframes open3 {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 102px;
+        height: 0;
+    }
+    100% {
+        width: 102px;
+        height: $button-height;
+    }
+}
+
+@keyframes openB3 {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 102px;
+    }
+}
+
+@keyframes open4 {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 59px;
+        height: 0;
+    }
+    100% {
+        width: 59px;
+        height: $button-height;
+    }
+}
+
+@keyframes openB4 {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 59px;
+    }
+}
+
+@keyframes open5 {
+    0% {
+        width: 0;
+        height: 0;
+    }
+    50% {
+        width: 59px;
+        height: 0;
+    }
+    100% {
+        width: 59px;
+        height: $button-height;
+    }
+}
+
+@keyframes openB5 {
+    0% {
+        width: 0px;
+    }
+    100% {
+        width: 59px;
+    }
+}
+
+.btn {
+  cursor: pointer;
+  border: 0;
+  border-radius: 5px;
+  color: #222;
+  font-size: 14px;
+  padding: 7px 18px;
+  height: 40px;
+  text-align: center;
+  text-decoration: none;
+  transition-property: color, background;
+  transition-duration: .1s;
+  transition-timing-function: ease-in-out;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  display: inline-block;
+}
+
+//Bg Button
+
+.btn-bg {
+  overflow: hidden;
+  background: #004270;
+  color: #fff;
+  &:after {
+   content: '';
+   transform: translateY(100%);
+   position: absolute;
+   background: #008ED5;
+   z-index: -1;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom:0;
+   transition-property: transform, border;
+   transition-duration: .15s;
+   transition-timing-function: ease-in-out;
+  }
+  &.btn-border {
+    background: transparent;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  &:hover, &:focus {
+    color: #fff;
+    &:after {
+     content: '';
+     transform: translateY(0);
+    }
+  }
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+}
+.hover-link-1 {
+    transition: .3s ease;
+    line-height: 24px;
+    position: relative;
+    text-decoration: none;
+    &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        width: 100%;
+        height: 1px;
+        background: #21446E;
+        transform: scale(0);
+        transition: .3s ease;
+    }
+    &:hover {
+      &:before {
+        content: " ";
+        display: block;
+        position: absolute;
+        bottom: -3px;
+        width: 100%;
+        height: 1px;
+        background: #21446E;
+        transform: scale(1);
+      }
+    }
+  }
+//анимация телефонного инпута
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+
+$bg-start: #8b9da9;
+$bg-end: #fff6e4;
+$bg-shadow-size: 100px;
+$bg-shadow-value: 0.3;
+
+$focused-input: #6eb6de;
+
+$btn-grad-start: #6eb6de;
+$btn-grad-end: #4a77d4;
+$btn-border: darken($btn-grad-start, 30%);
+$btn-bg-shift: -15px;
+
+$label-disabled: #b4c0c6;
+
+.input-group-a {
+  &.invalid {
+    border-bottom: 1px solid #ff5555!important;
+    .input-text {
+      color: #ff5555;
+    }
+    .input-label {
+      color: #ff5555!important;
+    }
+  }
+  .input-text {
+    width: 100%;
+    color: #008dd2;
+  }
+  .input-label {
+    color: #008dd2;
+  }
+}
+
+.text-danger {
+  color: #ff5555;
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 14px;
+}
+
+.s-service, * {
+     .input-group-a {
+    border-color: #008DD2;
+    position: relative;
+    color: #008DD2;
+    text-align: right;
+    margin-bottom: 80px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 360px;
+    &:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: #004270;
+      width: 0px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: -1px;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .input-label {
+      font-weight: bold;
+      color: #008DD2;
+      font-size: 16px;
+      text-align: left;
+      position: absolute;
+      top: -3px;
+      left: 0px;
+      right: 0;
+      z-index: 1;
+      transition: 0.3s;
+      &.disabled{
+        color: $label-disabled;
+      }
+    }
+    .input-text {
+      border: none;
+      height: 35px;
+      position: relative;
+      z-index: 2;
+      background: none;
+      width: 100%;
+      max-width: 360px;
+      color: #004270;
+      &:disabled {
+        color: $label-disabled;
+      }
+      &:focus, &:active {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+    &.focus {
+      &:after {
+        opacity: 1;
+        width: 100%;
+        background: #004270;
+      }
+    }
+
+    &.focus, &.filled {
+      .input-label {
+        top: -7px;
+        font-size: 1.2rem;
+        color: #004270;
+        &.disabled {
+          color: $label-disabled;
+        }
+      }
+    }
+  }
+}
+
+.s-subscribe, * {
+  .input-group-a {
+    border-bottom: 1px solid #fff;
+    position: relative;
+    color: #fff;
+    text-align: right;
+    margin-bottom: 80px;
+    margin-top: 10px;
+    width: 100%;
+    max-width: 360px;
+    .s-subscribe__button {
+      background: none;
+      border: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 41px;
+      height: 41px;
+      z-index: 2;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      height: 1px;
+      background: #fff;
+      width: 0px;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: -1px;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .input-label {
+      font-weight: 100;
+      color: #fff;
+      font-size: 16px;
+      text-align: left;
+      position: absolute;
+      top: -3px;
+      left: 0px;
+      right: 0;
+      z-index: 1;
+      transition: 0.3s;
+      &.disabled{
+        color: $label-disabled;
+      }
+    }
+    .input-text {
+      border: none;
+      height: 41px;
+      position: relative;
+      z-index: 2;
+      background: none;
+      width: 100%;
+      max-width: 360px;
+      color: #fff;
+      &:disabled {
+        color: $label-disabled;
+      }
+      &:focus, &:active {
+        box-shadow: none;
+        outline: none;
+      }
+    }
+    &.focus {
+      &:after {
+        opacity: 1;
+        width: 100%;
+        background: #004270;
+      }
+      .arrow-right {
+        width: 41px;
+      }
+    }
+    &.focus, &.filled {
+      .input-label {
+        top: -7px;
+        font-size: 1.2rem;
+        color: #fff;
+        &.disabled {
+          color: $label-disabled;
+        }
+      }
+    }
+  }
+  .arrow-right {
+    right: 6px;
+  }
+  .arrow-right, .arrow-right:before, .arrow-right:after {
+    background-color: #fff;
+    transition: 0.5s;
+  }
+}
+
+.select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  font-size: 16px;
+  width: 100%;
+  height: 60px;
+  text-align: left;
+  margin-bottom: 20px;
+  color: #008dd2;
+}
+
+.select-hidden {
+  display: none;
+  visibility: hidden;
+  padding-right: 10px;
+}
+
+.select-styled {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 13px 20px 13px 0;
+  -webkit-transition: all .2s ease-in;
+  transition: all .2s ease-in;
+  &:after {
+    content: "";
+    background: url(../img/arrow_small_bot.svg);
+    background-repeat: no-repeat;
+    width: 20px;
+    height: 26px;
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    -webkit-transition: .25s all;
+    transition: .25s all;
+  }
+  &:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    right: 0;
+    font-size: 16px;
+    height: 40px;
+    width: 40px;
+    -webkit-transition: all 275ms;
+    transition: all 275ms;
+    cursor: pointer;
+  }
+}
+
+.select-options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 10;
+  background-color: #008ED5;
+  list-style-type: none;
+  padding: 18px 0;
+  color: #fff;
+  li {
+    position: relative;
+    padding: 12px 30px;
+    -webkit-transition: all .15s ease-in;
+    transition: all .15s ease-in;
+    &:first-child {
+      display: none;
+    }
+    &:hover {
+        background-color: #009FDC;
+    }
+    &[choise='false'] {
+      color: #ffffff78
+    }
+  }
+  li.active {
+    background-color: #008ed5;
+    color: #004270;
+  }
+}
+
+.select_blue {
+  .select-styled {
+    border-bottom: 1px solid #008dd2;
+    &:after {
+      background: url(../img/arrow_small_bot.svg);
+      background-repeat: no-repeat;
+    }
+    &:before {
+      border-color: #000;
+    }
+  }
+  .select-options {
+    background-color: #007ab6;
+    color: #fff;
+  }
+}

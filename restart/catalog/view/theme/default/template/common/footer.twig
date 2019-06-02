@@ -1,0 +1,182 @@
+<section class="s-subscribe">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="s-subscribe__title">Оставьте заявку на ремонт и в течение 5 минут мы вам перезвоним</h4>
+        <div class="s-subscribe__phone input-group-a">
+            <label class="input-label">Телефон</label>
+            <input class="input-text" type="text" name="callback_phone"/>
+            <button type="button" class="s-subscribe__button">
+              <span class="arrow-right"></span>
+            </button>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal fade" id="callback_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="31.688" height="31.688" viewBox="0 0 31.688 31.688"><path id="crest" class="cls-1" d="M421.354,80.646l-0.708.707L405.5,66.207,390.354,81.354l-0.708-.707L404.793,65.5,389.646,50.354l0.708-.707L405.5,64.793l15.146-15.147,0.708,0.707L406.207,65.5Z" transform="translate(-389.656 -49.656)"/></svg></span></button>
+        <h4 class="modal-title">Заказать обратный звонок</h4>
+      </div>
+      <form id="callback">
+      <div class="modal-body">
+          <input type="hidden" name="callback_subject" value="Обратный звонок">
+          <div class="s-service__phone input-group-a">
+            <label class="input-label">Представьтесь</label>
+            <input class="input-text" name="callback_name" type="text"/>
+          </div>
+          <div class="s-service__phone input-group-a">
+            <label class="input-label">Ваш телефон</label>
+            <input class="input-text" name="callback_telephone" type="text"/>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="s-service__button">Узнать стоимость<span class="arrow-right"></span></a>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="success_modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><svg xmlns="http://www.w3.org/2000/svg" width="31.688" height="31.688" viewBox="0 0 31.688 31.688"><path id="crest" class="cls-1" d="M421.354,80.646l-0.708.707L405.5,66.207,390.354,81.354l-0.708-.707L404.793,65.5,389.646,50.354l0.708-.707L405.5,64.793l15.146-15.147,0.708,0.707L406.207,65.5Z" transform="translate(-389.656 -49.656)"/></svg></span></button>
+        <div class="modal__icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="29.688" height="20.688" viewBox="0 0 29.688 20.688"><path id="mark" class="cls-1" d="M455.354,200.354L436.207,219.5l0.147,0.146-0.708.708-0.146-.147-0.146.147-0.708-.708,0.147-.146-9.147-9.146,0.708-.708,9.146,9.147,19.146-19.147Z" transform="translate(-425.656 -199.656)"/></svg>
+        </div>
+      </div>
+      <div class="modal-body">
+          <div class="modal-body__title">Спасибо!</div>
+          <div class="modal__text">В ближайшее время мы свяжемся с вами.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="footer-info">
+          <div class="footer-col footer-logo">
+            <a href="#"><img src="catalog/view/theme/default/img/footer-logo.png" alt="footer-logo"></a>
+          </div>
+          <div class="footer-col footer-menu">
+            <h5>Ремонт техники</h5>
+            <ul>
+              {% for category in categories %}
+              <li><a href="{{ category['href'] }}">{{ category['name'] }}</a></li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="footer-col footer-information">
+            <h5>Информация</h5>
+            <ul>
+              <li><a href="/about">О компании</a></li>
+              <li><a href="/news">Новости</a></li>
+              <li><a href="/contact">Контактная информация</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-contacts">
+            <h5>Контакты</h5>
+            <a href="tel:{{ telephone }}" class="footer-phone">{{ telephone }}</a>
+            <span class="footer-address">{{ address }}</span>
+            <span class="footer-address">Время работы: Пн-Пт 10:00-20:00<br>СБ, ВС 10:00-18:00</span>
+            <span class="footer-address">Без выходных работаем для Вас и Ваших айфонов!</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2018 «Рестарт» - ремонт цифровой техники</span>
+          <a href="https://Website96.ru" target="_blank" class="footer-website"><span>Разработка и продвижение сайтов</span><img src="catalog/view/theme/default/img/web-logo.png" alt="logo"></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+$(".btn[data-target='#callback_modal']").click(function() {
+  $("input[name='callback_subject']").val('Обратный звонок');
+});
+
+$("input[name='callback_phone'], input[name='callback_telephone'], input[name='request_form_phone'], input[name='no_model_phone']").mask("+7 999 999-99-99");
+
+$(".s-subscribe .s-subscribe__button").click(function(event) {
+    $.ajax({
+        url: "index.php?route=information/contact/callback",
+        type: "post",
+        beforeSend: function() {
+          $(".input-group-a").removeClass("invalid");
+          $(".input-group-a .text-danger").empty();
+        },
+        data: {
+            callback_phone: $("input[name='callback_phone']").val(),
+        },
+        dataType: 'json',
+        success: function(json) {
+          if (json['error'].length != 0) {
+            for (i in json['error']) {
+              var element = $('.s-subscribe input[name="'+i+'"]');
+              if ($(element)) {
+                  $(element).addClass("invalid");
+              } else {
+                  $(element).removeClass("invalid");
+              }
+            }
+          } else {
+            $('#success_modal').modal("show");
+          }
+        }
+    });
+    return false;
+});
+
+$("#callback .s-service__button").click(function(event) {
+    $.ajax({
+        url: "index.php?route=information/contact/callback_modal",
+        type: "post",
+        beforeSend: function() {
+          $(".input-group-a").removeClass("invalid");
+          $(".input-group-a .text-danger").empty();
+        },
+        data: {
+            callback_name: $("input[name='callback_name']").val(),
+            callback_telephone: $("input[name='callback_telephone']").val(),
+            callback_subject: $("input[name='callback_subject']").val()
+        },
+        dataType: 'json',
+        success: function(json) {
+          if (json['error'].length != 0) {
+            for (i in json['error']) {
+              var element = $('#callback input[name="'+i+'"]');
+              if ($(element)) {
+                  $(element).parent(".input-group-a").addClass("invalid");
+                  $(element).parent(".input-group-a").append("<div class='text-danger'>" + json['error'][i] + "</div>");
+              } else {
+                  $(element).parent(".input-group-a").removeClass("invalid");
+                  $(element).parent(".input-group-a .text-danger").empty();
+              }
+            }
+          } else {
+            $('#callback_modal').modal("hide");
+            setTimeout(function() {
+              $('#success_modal').modal("show");
+            }, 1000);
+          }
+        }
+    });
+    return false;
+});
+</script>
+
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+
+</body></html>

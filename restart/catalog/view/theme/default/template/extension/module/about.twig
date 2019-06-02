@@ -1,0 +1,73 @@
+<section class="s-information">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-information__left">
+          <img src="catalog/view/theme/default/img/element3.png" class="s-information__left--img4" alt="background-element3" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+          <h2 class="h2">{{ heading_title }}</h2>
+          {{ html }}
+          <ul class="list-icon">
+            <li>
+              <h5>{{ advantages_title }}</h5>
+              <p>{{ advantages_description }}</p>
+            </li>
+            <li>
+              <h5>{{ advantages_title2 }}</h5>
+              <p>{{ advantages_description2 }}</p>
+            </li>
+            <li>
+              <h5>{{ advantages_title3 }}</h5>
+              <p>{{ advantages_description3 }}</p>
+            </li>
+            <li>
+              <h5>{{ advantages_title4 }}</h5>
+              <p>{{ advantages_description4 }}</p>
+            </li>
+          </ul>
+        </div>
+        <div class="s-information__right">
+          <img src="catalog/view/theme/default/img/element2.png" class="s-information__right--img5" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+          <img src="catalog/view/theme/default/img/element4.png" class="s-information__right--img6" alt="background-element4" data-paroller-direction="vertical" data-paroller-factor="-0.4" data-paroller-type="foreground">
+          <div class="owl-carousel s-information__right--carousel">
+            {% for banner in banners %}
+            <div class="s-information__right--slide">
+              <div class="s-information__right--img">
+                <img src="{{ banner.image }}" alt="banner">
+              </div>
+              <div class="s-information__right--info">
+                <h4>{{ banner.title }}</h4>
+                <a href="{{ banner.link }}">Условия обмена <span class="arrow-right"></span></a>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">{{ repair }}</span>
+            <span class="s-information__right--desc">ремонтов</span>
+          </div>
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">{{ clients }}</span>
+            <span class="s-information__right--desc">довольных клиентов</span>
+          </div>
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">{{ year }}</span>
+            <span class="s-information__right--desc">год основания компании</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function() {
+    $('.s-information__right--carousel').owlCarousel({
+    	loop: true,
+    	nav: true,
+    	navText: " ",
+    	smartSpeed: 700,
+    	items: 1,
+    	dots: true
+    });
+  });
+</script>

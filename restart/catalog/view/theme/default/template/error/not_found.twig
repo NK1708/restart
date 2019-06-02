@@ -1,0 +1,32 @@
+{{ header }}
+<div id="error-not-found" class="container s-notfound">
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+    <div class="row">
+      <div class="col-sm-6">
+        <img src="catalog/view/theme/default/img/not-found.png" class="s-notfound__img">
+        <span class="s-notfound__404">404</span>
+      </div>
+      <div class="col-sm-6">
+        <div class="s-notfound__text">
+          <h1 class='h1'>Страница не найдена</h1>
+          <p>
+            Сожалеем, но такой страницы нет. </br>
+            Можем предложить <a href="#">вернуться назад</a></br>
+            или <a href="#">перейти на главную.</a>
+          </p>
+        </div>
+      </div>
+    </div>
+     
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

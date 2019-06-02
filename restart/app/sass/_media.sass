@@ -1,0 +1,556 @@
+@import "vars"
+
+/*==========  Desktop First  ==========*/
+
+
+@media only screen and (max-width : 1500px)
+	body
+		padding: 0
+	.header
+		&__logo
+			display: none
+		&__minlogo
+			display: block
+			margin-top: -18px
+		&__search
+			input:focus
+				width: 150px
+		&__info
+			padding-bottom: 30px
+			border-bottom: 1px solid #DEE3E9
+		&__menu
+			margin-top: 25px
+
+	.s-service
+		&__img3
+			display: none
+
+	.s-contacts
+		margin-top: 30px
+		iframe
+			width: 600px
+
+@media only screen and (max-width: 1400px)
+	.s-contacts
+		#map
+			position: relative
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px)
+	/**/
+	.header
+		font-weight: 600
+		&__nav
+			display: none
+		&__search
+			display: none
+		&__mobile-logo
+			display: inline-block
+			margin-top: -20px
+		&__minlogo
+			display: none
+		&__place
+			span
+				font-size: 13px
+		&__info
+			border-bottom: 0
+		&__menu
+			display: none
+		&__m-menu
+			display: flex
+			border: 1px solid #DEE3E9
+			border-radius: 5px 0 0 0
+		&__m-button
+			width: 190px
+			font-size: 14px
+			background-color: transparent
+			border: 0
+			border-right: 1px solid #DEE3E9
+		.hamburger
+			padding: 0
+		.hamburger-box
+			width: 15px
+			height: 10px
+			margin-right: 10px
+		.hamburger-inner, .hamburger-inner::after, .hamburger-inner::before
+			height: 1px
+			width: 15px
+		.hamburger-inner::before
+			top: -4px
+		.hamburger-inner::after
+			top: -8px
+		.hamburger--collapse.is-active
+			.hamburger-inner
+				bottom: -6px
+		&__m-search
+			width: 100%
+			position: relative
+			font-size: 14px
+			input
+				width: 92%
+				padding: 9px 32px 9px 10px
+				position: relative
+				border-radius: 5px
+				border: 0
+				color: #DDE4EA
+				color: #004270
+			button
+				border: none
+				background-color: transparent
+				position: absolute
+				right: 8px
+				top: 9px
+	.s-repair
+		a
+			div
+				padding: 15px 0
+		a:hover
+			div
+				width: 460px
+
+
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px)
+	/**/
+	.slider
+		&.slider-carousel
+			.slider__itemb
+				background-size: contain
+	.s-category__model-item
+		width: calc(100% / 4)
+	.s-service__form:before
+		display: none
+	.h2
+		font-size: 50px
+		line-height: 55px
+
+	.s-service
+		.col-sm-12
+			flex-direction: column
+		&__form
+			width: 100%
+			text-align: left
+			background-color: #E9F0F3
+			padding: 10px 30px 30px
+			margin-top: 99px
+			.h4
+				float: none
+		&__title
+			padding-top: 0
+		&__title:before
+			display: none
+		.h1
+			margin-top: 0
+		&__down
+			bottom: -40px
+	.s-service:after
+		display: none
+	.s-repair
+		padding: 15px 0 60px
+		&__img
+			display: none
+		.h2
+			margin-bottom: 0
+			line-height: 55px
+		a:hover
+			div
+				width: auto
+	.s-information
+		.col-sm-12
+			flex-direction: column
+		&__left
+			width: 100%
+		&__right
+			width: 100%
+			&--carousel
+				&:after
+					width: 100%
+			&--numbers
+				padding-left: 0
+			&--img6
+				display: none
+
+	.s-subscribe
+		padding: 35px 0 30px
+		.col-sm-12
+			flex-direction: column
+		&__title
+			width: 100%
+		.input-group-a
+			margin: 30px 0 30px
+
+	.s-contacts
+		iframe
+			position: relative
+			width: 100%
+		&__button
+			margin-bottom: 30px
+			margin-top: 30px
+		#map
+			width: 100%
+			top: 0
+			#map-wrap
+				width: 100%
+				.ymaps-2-1-68-map
+					width: 100%
+	.s-news
+		&__year.active:after
+			width: 100px
+	.s-service__title
+		&:after
+			display: none
+	.s-category
+		&__advantages-item
+			padding: 22px 20px 0 47px
+			&:before
+				top: 32px
+
+@media only screen and (max-width: 768px)
+	.breadcrumb
+		padding-top: 10px
+  .s-information__right
+    h4
+      font-size: 30px
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px)
+	/**/
+	.slider
+		.slider-item
+			.slider-item__img
+				height: 350px
+			.slider-item__title
+        order: 0
+        font-size: 30px
+        padding: 0
+        max-width: 100%
+        &:after
+          display: none
+	.slider .owl-nav
+		position: relative
+		right: auto
+		bottom: 0
+		margin-top: 20px
+	.s-category__model
+		margin-top: 40px
+		.s-category__model-item
+			width: calc(100% / 2)
+	.background-block
+		padding: 0 30px
+		margin: 0 0 50px 0
+	.header
+		margin-bottom: 30px
+	.h1
+		font-size: 50px
+		line-height: 55px
+	.h3
+		font-size: 30px
+	.header
+		padding-top: 30px
+		.container
+			width: 100%
+		&__mobile-logo
+			width: 160px
+		&__place
+			margin-left: 0
+			margin-top: 15px
+			width: 100%
+			border: 1px solid #DEE3E9
+			border-radius: 5px
+			padding: 10px
+			span
+				display: none
+		&__right
+			button
+				display: none
+		&__info
+			flex-direction: column
+		&__m-menu
+			flex-direction: column-reverse
+		.hamburger
+			width: 100%
+			border: none
+			text-align: left
+			padding: 10px 20px
+			border-top: 1px solid #DEE3E9
+		&__m-search
+			input
+				width: 80%
+	.s-service__form
+		margin-top: 30px
+	.s-service
+		margin-top: 25px
+		margin-bottom: 50px
+		&__down
+			bottom: -20px
+			display: none
+	.s-repair
+		a
+			font-size: 24px
+			div
+				width: 100%
+	.s-information
+		.h2
+			font-size: 30px
+			line-height: 40px
+			margin-bottom: 20px
+		&__right
+			padding-top: 0
+			&--carousel
+				margin-bottom: 50px
+				&:after
+					display: none
+			&--number
+				font-size: 55px
+			&--numbers
+				margin-bottom: 50px
+		&__left
+			padding-top: 50px
+	.s-process
+		display: none
+		&__slide
+			flex-direction: column
+		&__img
+			width: 440px
+			height: 304px
+		&__desc
+			padding-left: 0
+
+	.s-subscribe
+		margin-top: 50px
+		&__title
+			font-size: 20px
+
+	footer
+		.footer-info
+			flex-direction: column
+			padding-top: 25px
+			padding-bottom: 30px
+		.footer-col
+			width: 100%
+			margin-bottom: 30px
+			ul
+				li
+					margin-bottom: 15px
+		.footer-logo
+			margin-bottom: 30px
+		.footer-address
+			margin-top: 10px
+
+	.s-news
+		&__year
+			display: inline-block
+			margin-right: 20px
+		&__year.active:after
+			display: none
+
+	.s-category
+		&__img
+			display: none
+		&__advantages
+			&-item
+				padding: 22px 20px 20px 47px
+		&__links
+			display: none
+		&__more
+			margin-top: 50px
+			h2
+				margin-bottom: 25px!important
+		&__model
+			padding: 40px 0
+			&-right
+				text-align: left
+		&__table
+			td
+				padding: 28px 33px 54px
+		&__desc
+			h3
+				font-size: 30px
+	.slider
+		&.slider-carousel
+			.owl-nav
+				bottom: -50px
+	.slider-wrapper
+		padding-bottom: 50px
+		.information-owl-numbers
+			bottom: -50px
+	.s-category__slider
+		&.slider
+			.owl-nav
+				text-align: right
+	.table-price-list
+		.table-price-list-item
+			.table-price-list-item__info
+				margin-bottom: 10px
+
+
+@media only screen and (max-width: 600px)
+	.slider-wrapper
+		.information-owl-numbers
+			bottom: -80px
+	.s-category__model-item
+		width: 100%
+
+@media only screen and (max-width : 480px)
+	/**/
+	.slider
+		.slider-item
+			.slider-item__img
+				height: 250px
+	.slider
+		&.slider_small
+			padding: 0 15px
+			.slider-item__title
+				display: none
+			.owl-nav
+				left: 0
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px)
+	/**/
+	.s-service__title h1
+		line-height: 34px
+	.h1
+		font-size: 30px
+		line-height: 38px
+	.s-service__title h3
+		line-height: 26px
+	.h3
+		font-size: 22px
+		line-height: 24px
+	.s-service
+		margin-bottom: 50px
+		&__title
+			.h3
+				margin-bottom: 30px
+		&__title:after
+			bottom: -70px
+			height: 45px
+		&__form
+			margin-top: 20px
+			.h4
+				width: auto
+				margin-bottom: 20px
+			.select2-container
+				width: 220px!important
+			.select2-container--default
+				.select2-selection--single
+					width: 220px!important
+					padding: 20px 0
+					.select2-selection__arrow
+						top: 11px
+		.input-group-a
+			width: 220px
+			margin-bottom: 30px
+	.select2-dropdown--below
+		width: 220px!important
+
+	.s-repair
+		.h2
+			font-size: 30px
+		a
+			font-size: 18px
+			div
+				width: 100%
+	.s-subscribe
+		.input-group-a
+			width: 260px
+	footer
+		.footer-bottom
+			flex-direction: column
+			span
+				margin-bottom: 15px
+
+	.s-contacts
+		&__title
+			font-size: 30px
+		.select
+			width: 250px
+
+	.s-news
+		&__box
+			flex-direction: column
+			padding-bottom: 0
+		&__text
+			padding: 20px 0
+		&__img
+			width: 245px
+
+	.s-newsitem
+		&__img
+			margin: 10px 0
+
+	.s-notfound
+		.col-sm-6
+			position: relative
+		&__img
+			width: 100%
+		&__text
+			.h1
+				font-size: 30px
+				line-height: 34px
+
+	.s-category
+		&__line
+			flex-direction: column
+		&__table
+			td
+				padding: 14px 21px 50px
+				font-size: 12px
+		&__more
+			.h2
+				font-size: 28px
+				line-height: 32px
+		&__model
+			&-item
+				margin: 0 auto
+			.h2
+				text-align: left
+		&__desc
+			h3
+				font-size: 22px
+				line-height: 26px
+	.table-price
+		.table-price__header
+			padding: 25px
+		.table-price-list
+			.table-price-list-item
+				padding: 25px
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px)
+	/**/
+
+
+/*==========  Mobile First  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px)
+	/**/
+
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px)
+	/**/
+
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px)
+  .modal-dialog
+    margin: 0 auto
+    height: 100vh
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px)
+	/**/
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px)
+	/**/

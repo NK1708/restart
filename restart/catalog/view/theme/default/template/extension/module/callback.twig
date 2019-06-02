@@ -1,0 +1,48 @@
+<section class="s-subscribe">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="s-subscribe__title">Оставьте заявку на ремонт и в течение 5 минут мы вам перезвоним</h4>
+        <div class="s-subscribe__phone input-group-a">
+            <label class="input-label">Телефон</label>
+            <input class="input-text" type="text" name="callback_phone"/>
+            <span class="arrow-right"></span>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+$(".s-subscribe .arrow-right").click(function(event) {
+    $.ajax({
+        url: "",
+        type: "post",
+        beforeSend: function() {
+          // $('.text-danger').remove();
+          // $('.input').removeClass('invalid');
+          // $("#form_registration .alert").remove();
+        },
+        data: {
+            phone: $("input[name='callback_name']").val(),
+        },
+        dataType: 'json',
+        success: function(json) {
+          if (json['error'].length != 0) {
+              for (i in json['error']) {
+                var element = $('.s-subscribe input[name="'+i+'"]');
+                if ($(element)) {
+                    $(element).addClass("invalid");
+                    // $(element).parent(".form-controll").append("<div class='text-danger text-danger_dark'>" + json['error'][i] + "</div>");
+                } else {
+                    $(element).removeClass("invalid");
+                }
+              }
+          } else {
+              $("#form_registration .alert_danger").remove();
+          }
+        }
+    });
+    return false;
+});
+</script>

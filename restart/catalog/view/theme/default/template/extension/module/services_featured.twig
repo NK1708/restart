@@ -1,0 +1,41 @@
+<section class="s-repair">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-repair__content">
+          <h2 class="h2">Услуги по ремонту</h2>
+          <div class="s-repair__links">
+            {% for category in categories %}
+            <a href="{{ category['href'] }}" class="s-repair__link1" data-image="{{ category['image'] }}"><div>{{ category['name'] }}</div></a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="s-repair__img">
+          <img src="" alt="Услуги по ремонту">
+        </div>
+      </div>
+    </div>
+  </div>
+  <video autoplay muted loop id="video-background"></video>
+</section>
+
+<script>
+  $(document).ready(function() {
+    if ($(document).width() >= '768') {
+      var video = document.getElementById("video-background");
+      $("#video-background").append('<source src="catalog/view/theme/default/video/bg_wave.mp4" type="video/mp4">')
+      video.addEventListener('timeupdate', function () {
+        if (video.currentTime >= 7) {
+            video.currentTime = 0;
+            video.play();
+        }
+      }, false);
+    }
+    var image = $('.s-repair__link1:first-child').attr('data-image');
+    $(".s-repair__img img").attr("src", image);
+  	$(".s-repair__link1").hover(function() {
+  		var image = $(this).attr('data-image');
+  		$(".s-repair__img img").attr("src", image);
+  	});
+  });
+</script>

@@ -1,0 +1,41 @@
+<div class="slider-wrapper">
+  <div class="slider slider-carousel owl-carousel">
+    {% for banner in banners %}
+    <div class="slider__item slider-item" style="background-image: url('{{ banner.image }}')"></div>
+    {% endfor %}
+  </div>
+  <!-- <div class="information-owl-numbers"><span class="counter"></span><span class="all-counter"></span></div> -->
+</div>
+
+<script>
+  $(document).ready(function() {
+    $('.slider').owlCarousel({
+      loop: true,
+      nav: true,
+      smartSpeed: 700,
+      navText: ['<div class="nav-button prev"><p><svg xmlns="http://www.w3.org/2000/svg" width="30.344" height="11.68" viewBox="0 0 30.344 11.68"><path id="arrow_long_left" class="cls-1" d="M420,1568H391.706l4.648,4.65-0.708.7-5.146-5.14-0.146.14-0.708-.7,0.147-.15-0.147-.15L390,1567h0l0.353-.35,0.146,0.14,5.146-5.14,0.708,0.7-4.646,4.65H420v1Z" transform="translate(-389.656 -1561.66)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>', '<div class="nav-button next"><p><svg xmlns="http://www.w3.org/2000/svg" width="31.34" height="11.688" viewBox="0 0 31.34 11.688"><path id="arrow_long_right" class="cls-1" d="M1530.35,773.646l-0.7.707-0.15-.146-5.15,5.146-0.7-.707,4.64-4.647H1499v-1h29.29l-4.64-4.647,0.7-.707,5.15,5.147,0.15-.147,0.7,0.707-0.14.147Z" transform="translate(-1499 -767.656)"/></svg></p><div class="hoverBtn"></div><div class="hoverBtn-bottom"></div></div>'],
+      responsive: {
+        0: {
+          items: 1
+        },
+        600: {
+          items: 1
+        },
+        992: {
+          items: 2
+        },
+        1100: {
+          items: 3
+        }
+      },
+      // onInitialized: function(e) {
+      //     $('.counter').text('1');
+      //     $('.all-counter').text('/' + this.items().length);
+      //   }
+    });
+    // $('.slider').on('changed.owl.carousel', function(e) {
+    //   $('.counter').text(++e.page.index);
+    //   $('.all-counter').text('/' + e.item.count);
+    // });
+  });
+</script>

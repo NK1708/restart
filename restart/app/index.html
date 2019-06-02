@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+
+	<title>Restart</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<meta property="og:image" content="path/to/image.jpg">
+	<link rel="shortcut icon" href="img/favicon/fire.png" type="image/x-icon">
+  <script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+	<!-- Chrome, Firefox OS and Opera -->
+	<meta name="theme-color" content="#fff">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#fff">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#fff">
+
+
+</head>
+
+<body>
+
+  <header class="header">
+
+    <div class="header__logo">
+      <a href="#"><img src="img/logo_mark.png" alt="logo"></a>
+
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="header__info">
+            <a href="#" class="header__minlogo"><img src="img/logo_mark.png" alt="logo"></a>
+            <a href="#" class="header__mobile-logo"><img src="img/mobile-logo.png" alt="logo"></a>
+            <div class="header__nav">
+              <div class="nav-button nav-button1">
+                <a href="#">
+                    <p>О компании</p>
+                    <div class="hoverBtn"></div>
+                    <div class="hoverBtn-bottom"></div>
+                 </a>
+              </div>
+              <div class="nav-button nav-button2">
+                <a href="#">
+                    <p>Новости</p>
+                    <div class="hoverBtn"></div>
+                    <div class="hoverBtn-bottom"></div>
+                 </a>
+              </div>
+              <div class="nav-button nav-button3">
+                <a href="#">
+                    <p>Контактная информация</p>
+                    <div class="hoverBtn"></div>
+                    <div class="hoverBtn-bottom"></div>
+                 </a>
+              </div>
+            </div>
+            <div class="header__right">
+              <div class="header__search">
+                <input type="search" placeholder="Поиск">
+                <button class="header__search-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                    <defs>
+                      <style>
+                        .cls-1 {
+                          fill: #21446e;
+                          fill-rule: evenodd;
+                        }
+                      </style>
+                    </defs>
+                    <path id="search" class="cls-1" d="M1117.15,72.326c1.28,1.284,2.57,2.57,3.85,3.85-0.28.281-.55,0.554-0.82,0.824q-1.92-1.917-3.85-3.852a5.686,5.686,0,0,1-5.02,1.1,5.494,5.494,0,0,1-3.3-2.3,5.7,5.7,0,0,1,8.33-7.628A5.736,5.736,0,0,1,1117.15,72.326Zm-4.46.911a4.522,4.522,0,0,0,.09-9.043A4.522,4.522,0,1,0,1112.69,73.237Z" transform="translate(-1107 -63)"/>
+                  </svg>
+                </button>
+              </div>
+              <div class="header__place">
+                <a href="tel:8343286-05-20">+7 343 286-05-20</a>
+                <span>г. Екатеринбург, ул. Ясная, 16</span>
+              </div>
+              <button class="btn btn-bg">Обратный звонок</button>
+            </div>
+          </div>
+          <div class="header__menu">
+            <ul>
+              <li><a href="#" class="hover-link-1">Ремонт iPhone</a></li>
+              <li><a href="#" class="hover-link-1">Ремонт iPad/iPod</a></li>
+              <li><a href="#" class="hover-link-1">Ремонт Mac/AppleWatch</a></li>
+              <li><a href="#" class="hover-link-1">Ремонт сотовых телефонов</a></li>
+              <li><a href="#" class="hover-link-1">Ремонт ноутбуков и планшетных ПК</a></li>
+            </ul>
+          </div>
+          <div class="header__m-menu">
+            <button type="button" class="navbar-toggle hamburger hamburger--collapse header__m-button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+              </span>
+              Меню сайта
+            </button>
+            <div class="header__m-search">
+                <input type="search" placeholder="Поиск">
+                <button class="header__search-button">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14">
+                    <defs>
+                      <style>
+                        .cls-1 {
+                          fill: #21446e;
+                          fill-rule: evenodd;
+                        }
+                      </style>
+                    </defs>
+                    <path id="search" class="cls-1" d="M1117.15,72.326c1.28,1.284,2.57,2.57,3.85,3.85-0.28.281-.55,0.554-0.82,0.824q-1.92-1.917-3.85-3.852a5.686,5.686,0,0,1-5.02,1.1,5.494,5.494,0,0,1-3.3-2.3,5.7,5.7,0,0,1,8.33-7.628A5.736,5.736,0,0,1,1117.15,72.326Zm-4.46.911a4.522,4.522,0,0,0,.09-9.043A4.522,4.522,0,1,0,1112.69,73.237Z" transform="translate(-1107 -63)"/>
+                  </svg>
+                </button>
+              </div>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="m-menu-catalog">
+              <li><a href="#">Ремонт iPhone</a></li>
+              <li><a href="#">Ремонт iPad/iPod</a></li>
+              <li><a href="#">Ремонт Mac/AppleWatch</a></li>
+              <li><a href="#">Ремонт сотовых телефонов</a></li>
+              <li><a href="#">Ремонт ноутбуков и планшетных ПК</a></li>
+            </ul>
+            <ul class="m-menu-info">
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Контактная информация</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<section class='s-service' id="layer1">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-service__title">
+          <h1 class='h1'>Сервисный центр RestartEkb</h1>
+          <h3 class='h3'>Ремонт iPhone, iPad, Macbook и прочей техники</h3>
+          <a href="#" class="s-service__down">Листайте вниз</a>
+        </div>
+        <div class="s-service__form">
+          <img src="img/element1.png" class="s-service__img1 paroller1" data-paroller-direction="vertical" data-paroller-factor="-0.1" data-paroller-type="foreground" alt="">
+          <img src="img/element2.png" class="s-service__img2" alt="" data-paroller-direction="vertical" data-paroller-factor="0.3" data-paroller-type="foreground">
+          <h4 class="h4">Узнайте стоимость ремонта вашего устройства</h4>
+          <select class="select-js select-gadjet" name="gadjet">
+            <option disabled selected>Выберите устройство</option>
+            <option value="iphone">iPhone</option>
+            <option value="ipad">iPad</option>
+            <option value="macbook">Macbook</option>
+          </select>
+          <select class="select-js select-problem" name="problem">
+            <option disabled selected>Что с ним случилось?</option>
+            <option value="iphone">iPhone</option>
+            <option value="ipad">iPad</option>
+            <option value="macbook">Macbook</option>
+          </select>
+          <div class="s-service__phone input-group-a">
+            <label class="input-label">Телефон</label>
+            <input class="input-text" type="text"/>
+          </div>
+          <a href="#" class="s-service__button">Узнать стоимость<span class="arrow-right"></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <img src="img/element3.png" class="s-service__img3" alt="" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+</section>
+<section class="s-repair">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-repair__content">
+          <h2 class="h2">Услуги по ремонту</h2>
+          <div class="s-repair__links">
+            <a href="#" class="s-repair__link1"><div>iPhone</div></a>
+            <a href="#" class="s-repair__link2"><div>iPad / iPod</div></a>
+            <a href="#" class="s-repair__link3"><div>Mac / AppleWatch</div></a>
+            <a href="#" class="s-repair__link4"><div>Сотовые телефоны</div></a>
+            <a href="#" class="s-repair__link5"><div>Ноутбуки и планшетные ПК</div></a>
+          </div>
+        </div>
+        <div class="s-repair__img">
+          <img src="img/iphone-menu.png" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="canvasHeader"></div>
+</section>
+
+<section class="s-information">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="s-information__left">
+          <img src="img/element3.png" class="s-information__left--img4" alt="" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+          <h2 class="h2">Ремонт Apple в Екатеринбурге</h2>
+          <p>Если вы ищете в Екатеринбурге сервисный центр Apple, который осуществляет ремонт техники этой легендарной компании, обращайтесь в компанию «RemonEkb, предоставляющую полный спектр профессиональных услуг по обслуживанию линейки всех моделей iPhone, iPad, iPod, MacBook.</p>
+          <p> Мы заботимся о каждом клиенте, предлагая оптимальные варианты восстановления полноценной работы вышедшей из строя техники, по доступным ценам, поэтому услуги нашего центра постоянно востребованы.</p>
+          <ul>
+            <li>
+              <h5>Доступность</h5>
+              <p>Удобное расположение наших сервис-центров в Екатеринбурге</p>
+            </li>
+            <li>
+              <h5>Сложные ремонты</h5>
+              <p>Устройство утоплено или не включается? Если можно починить - мы это сделаем!</p>
+            </li>
+            <li>
+              <h5>Сложные ремонты</h5>
+              <p>9 из 10 клиентов приходят к нам снова, чтобы отремонтировать свои новые гаджеты</p>
+            </li>
+            <li>
+              <h5>Качественные комлпектующие</h5>
+              <p>Мы используем только оригинальные запчасти для ремонта техники</p>
+            </li>
+          </ul>
+        </div>
+        <div class="s-information__right">
+          <img src="img/element2.png" class="s-information__right--img5" alt="" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+          <img src="img/element4.png" class="s-information__right--img6" alt="" data-paroller-direction="vertical" data-paroller-factor="-0.4" data-paroller-type="foreground">
+          <!-- <div class="owl-carousel s-information__right--carousel">
+            <div class="s-information__right--slide">
+              <div class="s-information__right--img">
+                <img src="img/apple_icon.png" alt="">
+              </div>
+              <div class="s-information__right--info">
+                <h4>Хотите обменять ваш сломанный гаджет на новый?</h4>
+                <a href="#">Условия обмена <span class="arrow-right"></span></a>
+              </div>
+            </div>
+            <div class="s-information__right--slide">
+              <div class="s-information__right--img">
+                <img src="img/apple_icon.png" alt="">
+              </div>
+              <div class="s-information__right--info">
+                <h4>Хотите обменять ваш сломанный гаджет на новый?</h4>
+                <a href="#">Условия обмена <span class="arrow-right"></span></a>
+              </div>
+            </div>
+            <div class="s-information__right--slide">
+              <div class="s-information__right--img">
+                <img src="img/apple_icon.png" alt="">
+              </div>
+              <div class="s-information__right--info">
+                <h4>Хотите обменять ваш сломанный гаджет на новый?</h4>
+                <a href="#">Условия обмена <span class="arrow-right"></span></a>
+              </div>
+            </div>
+          </div> -->
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">70 000</span>
+            <span class="s-information__right--desc">ремонтов</span>
+          </div>
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">1 849</span>
+            <span class="s-information__right--desc">довольных клиентов</span>
+          </div>
+          <div class="s-information__right--numbers">
+            <span class="s-information__right--number">2010</span>
+            <span class="s-information__right--desc">год основания компании</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="s-process">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="owl-carousel s-process__carousel">
+          <div class="s-process__slide">
+            <div class="s-process__img">
+              <img src="img/gallery-img.png" alt="">
+            </div>
+            <div class="s-process__desc">
+              <h4>Процесс работы наших мастеров</h4>
+            </div>
+          </div>
+          <div class="s-process__slide">
+            <div class="s-process__img">
+              <img src="img/gallery-img.png" alt="">
+            </div>
+            <div class="s-process__desc">
+              <h4>Процесс работы наших мастеров</h4>
+            </div>
+          </div>
+          <div class="s-process__slide">
+            <div class="s-process__img">
+              <img src="img/gallery-img.png" alt="">
+            </div>
+            <div class="s-process__desc">
+              <h4>Процесс работы наших мастеров</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<section class="s-subscribe">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h4 class="s-subscribe__title">Оставьте заявку на ремонт и в течение 5 минут мы вам перезвоним</h4>
+        <div class="s-subscribe__phone input-group-a">
+            <label class="input-label">Телефон</label>
+            <input class="input-text" type="text"/>
+            <span class="arrow-right"></span>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="footer-info">
+          <div class="footer-col footer-logo">
+            <a href="#"><img src="img/footer-logo.png" alt=""></a>
+          </div>
+          <div class="footer-col footer-menu">
+            <h5>Ремонт техники</h5>
+            <ul>
+              <li><a href="#">Ремонт iPhone</a></li>
+              <li><a href="#">Ремонт iPad/iPod</a></li>
+              <li><a href="#">Ремонт Mac/AppleWatch</a></li>
+              <li><a href="#">Ремонт сотовых телефонов</a></li>
+              <li><a href="#">Ремонт ноутбуков и планшетных ПК</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-information">
+            <h5>Информация</h5>
+            <ul>
+              <li><a href="#">О компании</a></li>
+              <li><a href="#">Новости</a></li>
+              <li><a href="#">Контактная информация</a></li>
+            </ul>
+          </div>
+          <div class="footer-col footer-contacts">
+            <h5>Контакты</h5>
+            <a href="tel:83432860520" class="footer-phone">+7 343 286-05-20</a>
+            <span class="footer-address">г. Екатеринбург, ул. Ясная, 16</span>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <span>© 2018 «Рестарт» - ремонт цифровой техники</span>
+          <span>Разработано в агенстве <a href="#">«Website96.ru»</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<link rel="stylesheet" href="css/main.min.css">
+<script src="js/scripts.min.js"></script>
+
+</body>
+</html>

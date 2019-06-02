@@ -1,0 +1,225 @@
+{{ header }}
+<img src="catalog/view/theme/default/img/element3.png" class="s-category__par5" alt="background-element3" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+<div id="product-category" class="container s-category">
+  <div class="s-category__wrap"><div class="s-category__links">
+    {% for device in devices %}
+          <a href="{{ device['href'] }}">{{ device['name'] }}</a>
+        {% endfor %}
+    </div>
+  </div>
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div id="content">
+    <div class="row">
+      <div class="col-md-8">
+        <img src="catalog/view/theme/default/img/element2.png" class="s-category__par1" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+        <img src="catalog/view/theme/default/img/element1.png" class="s-category__par2" alt="background-element1" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+        <h1 class="h1 page-title">{{ heading_title }}</h1>
+        <div class="s-category__desc">
+          {{ description }}
+        </div>
+        <a class="s-category__callback" data-toggle="modal" data-target="#callback_modal">Проконсультироваться<span class="arrow-right"></span></a>
+        <div class="s-category__line">
+          <span>Распространенные неисправности {{ heading_title }}</span>
+          <a href="#services_featured">Посмотреть все</a>
+        </div>
+        <div class="s-category__repairline">
+            {% set i = 0 %}
+            {% for service in services_featured if i < 3 %}
+            {% set i = i + 1 %}
+            <a href="{{ service['href'] }}" class="s-category__repairline-item">
+                <h5 class="h5">{{ service['name'] }}</h5>
+                <span>{{ service['description'] }} <span class="arrow-right"></span></span>
+            </a>
+            {% endfor %}
+        </div>
+      </div>
+      <div class="col-md-4">
+        <img src="{{ thumb }}" class="s-category__img" alt='{{ category['name'] }}'>
+      </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+          {{ content_top }}
+        </div>
+    </div>
+    {{ content_bottom }}
+  </div>
+</div>
+
+{% if services|length <= 0 %}
+
+<div class="s-category__model">
+  <img src="catalog/view/theme/default/img/element4.png" class="s-category__par3" alt="background-element4" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+  <img src="catalog/view/theme/default/img/element5.png" class="s-category__par4" alt="background-element5" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+   <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="h2">Выберите модель устройства для расчета цены<h2>
+                <div class="s-category__model-list">
+                  {% for category in categories %}
+                  <a href="{{ category['href'] }}" class="s-category__model-item">
+                    <img src="{{ category['image'] }}" alt="{{ category['name'] }}">
+                    <span>{{ category['name'] }}</span>
+                    <div class="arrow-right"></div>
+                  </a>
+                  {% endfor %}
+                </div>
+                <div class="s-category__model-form">
+                  <div class="s-category__model-left">
+                    <h3 class='h3'>Не нашли свою модель?</h3>
+                    <p>Оставьте заявку и мы сообщим вам стоимость ремонта вашего устройства</p>
+                  </div>
+                  <div class="s-category__model-right">
+                    <form id="form_no_model">
+                      <div class="s-category__model-input input-group-a">
+                        <label class="input-label">Название модели устройства</label>
+                        <input class="input-text" name="no_model_device" type="text"/>
+                      </div>
+                      <div class="s-category__phone-input input-group-a">
+                        <label class="input-label">Номер телефона</label>
+                        <input class="input-text" name="no_model_phone" type="text"/>
+                      </div>
+                      <a href="#" class="s-category__button">Узнать стоимость<span class="arrow-right"></span></a>
+                    </form>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+
+<div class="s-category__model">
+   <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="h2">
+                  <span>Стоимость ремонта {{ heading_title }}</span>
+                  <span class="s-category__model__abstract">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25"><path id="alert" class="cls-1" d="M1200.5,1247a12.5,12.5,0,1,1-12.5,12.5A12.5,12.5,0,0,1,1200.5,1247Zm0,0.97a11.53,11.53,0,1,1-11.53,11.53A11.527,11.527,0,0,1,1200.5,1247.97ZM1201,1265v-1h-1l-0.01,1H1201Zm0-3-0.02-6.99h-0.95L1200,1262h1Z" transform="translate(-1188 -1247)"/></svg>
+                    Все цены указаны без учета материалов
+                  </span>
+                <h2>
+                <ul class="list-unstyled nav-vertical">
+                  {% for category_service in services|keys %}
+                  <li class="nav-vertical__item">
+                    <span data-link="category_service_{{ loop.index }}">{{ category_service }}</span>
+                  </li>
+                  {% endfor %}
+                </ul>
+                {% for category_service in services|keys %}
+                <div class="table-price category_service_{{ loop.index }}">
+                  <div class="table-price__header">
+                    <span>{{ category_service }}</span>
+                  </div>
+                  <ul class="list-unstyled table-price__list table-price-list">
+                    {% for service in services[category_service] %}
+                    <li class="table-price-list__item table-price-list-item {% if service['price_new'] != 0 %} table-price-list-item_sale {% endif %}">
+                      <a href="{{ service['href'] }}" class="table-price-list-item__info">
+                        <div class="table-price-list-item__title">{{ service['service_name'] }}</div>
+                        <div class="table-price-list-item__time">{{ service['time'] }}</div>
+                      </a>
+                      <a href="#" data-toggle="modal" data-target="#callback_modal" class="s-service__button">Оставить заявку<span class="arrow-right"></span></a>
+                      <div class="table-price-list-item__price-wrap">
+                        {% if service['price_new'] != 0 %}
+                        <div class="table-price-list-item__priceold">{{ service['price_new'] }}</div>
+                        {% endif %}
+                        <div class="table-price-list-item__price {% if service['price_new'] != 0 %} table-price-list-item__price_new {% endif %}">{{ service['price'] }}</div>
+                      </div>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endif %}
+
+<div class="s-category__more" id="services_featured">
+  <img src="catalog/view/theme/default/img/element2.png" class="s-category__par3" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+   <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="h2">Какая у вас неисправность устройства?</h2>
+                <div class="s-category__table">
+                  {% for service in services_featured %}
+                  <a href="{{ service['href'] }}" class="s-category__table-item">
+                    <h5 class="h5">{{ service['name'] }}</h5>
+                    <span>Замена стекла или дисплея <span class="arrow-right"></span></span>
+                  </a>
+                  {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="s-category__text"> 
+  <div class="container">
+    <div class="row">
+        <div class="col-sm-12">{{ bottom_text }} </div>
+      </div>
+  </div>
+</div>
+
+<script>
+  $(".nav-vertical__item span").click(function() {
+    $("html, body").animate({
+      scrollTop: $("." + $(this).attr('data-link')).offset().top
+    }, 1000);
+    return false;
+  });
+  $(".s-service__button").click(function(e) {
+    var target = e.target;
+    var subject = $(target).siblings(".table-price-list-item__info").find(".table-price-list-item__title").text() + ' ' + $(".page-title").text();
+    $("input[name='callback_subject']").val(subject);
+  });
+  $("a[href='#services_featured']").click(function(){
+    $("html, body").animate({
+      scrollTop: $("#services_featured").offset().top
+    }, 1000);
+    return false;
+  });
+  $("#form_no_model .s-category__button").click(function(event) {
+      $.ajax({
+          url: "index.php?route=product/category/callback_no_model",
+          type: "post",
+          beforeSend: function() {
+            $(".input-group-a").removeClass("invalid");
+            $(".input-group-a .text-danger").empty();
+          },
+          data: {
+              device: $("input[name='no_model_device']").val(),
+              phone: $("input[name='no_model_phone']").val(),
+          },
+          dataType: 'json',
+          success: function(json) {
+            if (json['error'].length != 0) {
+              for (i in json['error']) {
+                var element = $('#form_no_model input[name="'+i+'"]');
+                if ($(element)) {
+                    $(element).parent(".input-group-a").addClass("invalid");
+                    $(element).parent(".input-group-a").append("<div class='text-danger'>" + json['error'][i] + "</div>");
+                } else {
+                    $(element).parent(".input-group-a").removeClass("invalid");
+                    $(element).parent(".input-group-a .text-danger").empty();
+                }
+              }
+            } else {
+              $('#success_modal').modal("show");
+            }
+          }
+      });
+      return false;
+  });
+</script>
+
+{{ footer }}

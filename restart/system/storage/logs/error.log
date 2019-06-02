@@ -1,0 +1,5 @@
+2018-08-08 11:57:33 - PHP Warning:  unlink(C:/OSPanel/domains/restart/system/storage/cache/cache.catalog.language.1533733036): No such file or directory in C:\OSPanel\domains\restart\system\library\cache\file.php on line 68
+2018-08-21 10:31:54 - PHP Notice:  Undefined variable: category_info in C:\OSPanel\domains\restart\system\storage\modification\catalog\controller\product\category.php on line 42
+2018-08-21 10:32:38 - PHP Notice:  Undefined variable: category_main in C:\OSPanel\domains\restart\system\storage\modification\catalog\controller\product\category.php on line 50
+2018-08-21 10:33:12 - PHP Notice:  Undefined variable: category_main in C:\OSPanel\domains\restart\system\storage\modification\catalog\controller\product\category.php on line 50
+2018-08-21 10:59:01 - PHP Notice:  Undefined variable: category_main in C:\OSPanel\domains\restart\catalog\controller\product\services_featured.php on line 34

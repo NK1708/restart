@@ -1,0 +1,52 @@
+{{ header }}
+<div id="information-information" class="container s-newsitem">
+  <img src="catalog/view/theme/default/img/element2.png" class="s-category__par1" alt="background-element2" data-paroller-direction="vertical" data-paroller-factor="-0.3" data-paroller-type="foreground">
+  <img src="catalog/view/theme/default/img/element3.png" class="s-service__img3" alt="background-element3" data-paroller-direction="vertical" data-paroller-factor="-0.5" data-paroller-type="foreground">
+  <div class="s-category__wrap"><div class="s-category__links" style="opacity: 0"></div></div>
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">
+      {{ content_top }}
+      <h1 class="h1">{{ heading_title }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="s-newsitem__img" style="background-image: url({{ image }})"></div>
+
+<div id="information-information2" class="container s-newsitem">
+  <div class="row">
+    <div id="content2" class="{{ class }}">
+      <div class="col-sm-2">
+        <div class="s-newsitem__date">{{ date_added }}</div>
+      </div>
+      <div class="col-sm-10">
+        <div class="s-newsitem__desc">
+          {{ description }}
+        </div>
+      </div>
+      {{ content_bottom }}
+    </div>
+    {{ column_right }}
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="s-newsitem__bottom">
+        {% if prev_news != '' %}<a href="{{ prev_news }}" class="s-newsitem__prev"><span class="arrow-right"></span>Предыдущая новость</a>{% endif %}
+        {% if next_news != '' %}<a href="{{ next_news }}" class="s-newsitem__next">Следующая новость<span class="arrow-right"></span></a>{% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+{{ footer }}
